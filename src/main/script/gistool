@@ -1,0 +1,14 @@
+#!/bin/bash
+JAR=gis-tools-1.0-SNAPSHOT.jar
+if [ -z "$GISTOOL" ] ; then
+    if [ -f target/$JAR ] ; then
+        GISTOOL=target/$JAR
+    else
+        if [ -f /usr/share/java/$JAR ] ; then
+            GISTOOL=/usr/share/java/$JAR
+        fi
+    fi
+fi
+echo $GISTOOL
+
+java -jar $GISTOOL "$@"
